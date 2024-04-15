@@ -1,0 +1,105 @@
+package com.cdac.Hashtable;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+
+class Address
+{
+	String CityName;
+	String CountryName;
+	
+	
+	public Address() 
+	{
+		super();
+	}
+	
+	public Address(String cityName, String countryName) 
+	{
+		super();
+		CityName = cityName;
+		CountryName = countryName;
+	}
+	
+	@Override
+	public String toString() {
+		return "Address [CityName=" + CityName + ", CountryName=" + CountryName + "]";
+	}
+}
+class Employee
+{
+	int Id;
+	String Name;
+	float Salary;
+	
+	public Employee() 
+	{
+		super();
+	}
+
+	public Employee(int id, String name, float salary) 
+	{
+		super();
+		Id = id;
+		Name = name;
+		Salary = salary;
+	}
+
+	@Override
+	public String toString() 
+	{
+		return "Employee [Id=" + Id + ", Name=" + Name + ", Salary=" + Salary + "]";
+	}
+}
+
+public class HashTableDemo1 
+{
+
+	public static void main(String[] args) 
+	{
+		//ArrayList<String> alist=new ArrayList<String>();
+		
+		Map<Employee, Address> mp=new HashMap<>();
+		
+		mp.put(new Employee(101, "Aryan", 25550.69f), new Address("Jabalpur","Bharat"));
+		mp.put(new Employee(104, "Raka", 28990.69f), new Address("Prayag","Bharat"));
+		mp.put(new Employee(103, "Riya", 30550.69f), new Address("Lucknow","Bharat"));
+		mp.put(new Employee(102, "Ruuhi", 99550.69f), new Address("Mumbai","Bharat"));
+		
+		
+		for(Map.Entry<Employee, Address> m:mp.entrySet())
+		{
+			Employee e=m.getKey();
+			Address a=m.getValue();
+			System.out.println("Employee Name: "+e.Name+" Address: "+a.CityName);
+		}System.out.println();
+		
+		for(Map.Entry<Employee, Address> m:mp.entrySet())
+		{
+			Employee e=m.getKey();
+			Address a=m.getValue();
+			System.out.println("Employee Name: "+m.getKey()+" Address: "+a.CityName);
+		}System.out.println();
+		
+		for(Map.Entry<Employee, Address> m:mp.entrySet())
+		{
+			System.out.println("Name: "+m.getKey().toString()+" Address: "+m.getValue().toString());
+		}System.out.println();
+		
+		int EmpId=103;
+		for(Map.Entry<Employee, Address> m:mp.entrySet())
+		{
+			if(m.getKey().Id==EmpId)
+			{
+				m.getValue().CityName="Bhopal" ;
+			}
+		}System.out.println();
+		
+		for(Map.Entry<Employee, Address> m:mp.entrySet())
+		{
+			System.out.println("Name: "+m.getKey().toString()+" Address: "+m.getValue().toString());
+		}System.out.println();
+	}
+}
